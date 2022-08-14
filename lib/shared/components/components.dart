@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 Widget defaultButton ({
@@ -10,6 +11,10 @@ Widget defaultButton ({
   bool isUpperCase = true
     })=> Container(
     width: width ,
+    decoration: BoxDecoration(
+      borderRadius : BorderRadius.circular(10.0),
+      color: background,
+    ),
     child: MaterialButton(
         onPressed: function,
         child :
@@ -17,10 +22,7 @@ Widget defaultButton ({
                 isUpperCase ? text.toUpperCase() : text ,
                 style: const TextStyle( color: Colors.white),
               ),
-        ),
-    decoration: BoxDecoration( borderRadius : BorderRadius.circular(10.0),
-      color: background,
-    )
+        )
     );
 Widget defaultTextButton({
   required String text,
@@ -59,7 +61,21 @@ Widget defaultFormField (
   onFieldSubmitted: onSubmit,
   onChanged: onChange
 );
-
+PreferredSizeWidget? defaultAppBar({
+  required BuildContext context,
+  Text? title,
+  List<Widget>? actions ,
+}) => AppBar(
+  leading: IconButton(
+    onPressed:()
+    {
+      Navigator.pop(context);
+    },
+    icon: const FaIcon(FontAwesomeIcons.angleLeft),
+  ),
+  title: title,
+  actions: actions,
+);
 
 Widget dividerBuilder()=>Container(
   color: Colors.grey[300],

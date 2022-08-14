@@ -2,6 +2,7 @@ import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/shared/components/components.dart';
+import 'package:social_app/layout/social_layout.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
 
@@ -20,27 +21,10 @@ class SocialRegisterScreen extends StatelessWidget {
         child: BlocConsumer<SocialRegisterCubit,SocialRegisterStates>(
         listener: (context,state)
         {
-         /* if ( state is SocialRegisterSucceedState)
+          if (state is SocialCreateUserSucceedState)
           {
-            if (state.loginModel.status!)
-            {
-              CasheHelper.saveData(
-                  key: "token",
-                  value: state.loginModel.data!.token
-              ).then((value){
-                token = state.loginModel.data!.token;
-                print(state.loginModel.data!.token.toString());
-                navigateAndFinish(context, const SocialLayout());
-                //goToHomeLayoutScreen();
-              });
-            }
-            else
-            {
-              showToast(
-                  text: state.loginModel.message!,
-                  state: ToastStates.error);
-            }
-          }*/
+            navigateAndFinish(context, const SocialLayout());
+          }
         },
         builder: (context,state)
         {
@@ -74,6 +58,7 @@ class SocialRegisterScreen extends StatelessWidget {
                             {
                               return 'Name Can not be Empty ';
                             }
+                            return null;
                           }
                       ),
                       const SizedBox(
@@ -89,6 +74,7 @@ class SocialRegisterScreen extends StatelessWidget {
                             {
                               return 'Email Can not be Empty ';
                             }
+                            return null;
                           }
                       ),
                       const SizedBox(height: 20,
@@ -104,6 +90,7 @@ class SocialRegisterScreen extends StatelessWidget {
                             {
                               return 'Phone Can not be Empty ';
                             }
+                            return null;
                           }
                       ),
                       const SizedBox(height: 20,
@@ -119,7 +106,7 @@ class SocialRegisterScreen extends StatelessWidget {
                           {
                             SocialRegisterCubit.get(context).changePasswordVisibility();
                           },
-/*                          onSubmit: (value)
+                          onSubmit: (value)
                           {
                             if (formKey.currentState!.validate())
                             {
@@ -130,13 +117,14 @@ class SocialRegisterScreen extends StatelessWidget {
                                 phone: phoneController.text,
                               );
                             }
-                          },*/
+                          },
                           validate: (value)
                           {
                             if (value == null || value.isEmpty )
                             {
                               return ' Password Can not be Empty  ';
                             }
+                            return null;
                           }
                       ),
                       const SizedBox(
@@ -150,12 +138,12 @@ class SocialRegisterScreen extends StatelessWidget {
                       {
                         if (formKey.currentState!.validate())
                         {
-                          /*SocialRegisterCubit.get(context).userRegister(
+                          SocialRegisterCubit.get(context).userRegister(
                               email: emailController.text,
                               password: passwordController.text,
                               name: nameController.text,
                               phone: phoneController.text,
-                          );*/
+                          );
                         }
                       } ),
                   fallback: (context)=> const Center(child: CircularProgressIndicator()),

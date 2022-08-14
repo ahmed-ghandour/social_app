@@ -4,11 +4,11 @@ import 'package:hexcolor/hexcolor.dart';
 import 'colors.dart';
 ThemeData lightTheme = ThemeData(
   primarySwatch: defaultColor,
-  scaffoldBackgroundColor: Colors.white ,
-  appBarTheme:  const AppBarTheme(
+  scaffoldBackgroundColor: Colors.white,
+  appBarTheme: const AppBarTheme(
       titleSpacing: 14,
       iconTheme: IconThemeData(
-          color: Colors.black
+          color: Colors.black54
       ),
       systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.red,
@@ -19,8 +19,9 @@ ThemeData lightTheme = ThemeData(
       titleTextStyle: TextStyle(
           fontWeight: FontWeight.w600,
           color: Colors.black,
-          fontSize: 20
-      )
+          fontSize: 20,
+          fontFamily: 'Jannah',
+      ),
   ),
 
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -28,22 +29,23 @@ ThemeData lightTheme = ThemeData(
     selectedItemColor: defaultColor,
 
   ),
-  fontFamily: 'lato',
+  fontFamily: 'Jannah',
   textTheme: const TextTheme(
       bodyText1: TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.w500,
           color: Colors.black
-      )
+      ),
   ),
 );
 ThemeData darkTheme = ThemeData(
+  cardColor:HexColor('333739'),
   primarySwatch: defaultColor,
   scaffoldBackgroundColor: HexColor('333739') ,
-  appBarTheme:   AppBarTheme(
+  appBarTheme: AppBarTheme(
       titleSpacing: 14,
       iconTheme: const IconThemeData(
-          color: Colors.white
+          color: Colors.grey
       ),
       systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: HexColor('333739'),
@@ -53,7 +55,7 @@ ThemeData darkTheme = ThemeData(
       elevation: 0.0,
       titleTextStyle: const TextStyle(
           fontWeight: FontWeight.w600,
-          color: Colors.white,
+          color: Colors.grey,
           fontSize: 20
       )
   ),
@@ -63,10 +65,14 @@ ThemeData darkTheme = ThemeData(
       selectedItemColor: defaultColor,
       unselectedItemColor: Colors.grey
   ),
-  fontFamily: 'lato',
-  textTheme: const TextTheme(
-      bodyText1: TextStyle(
-          fontSize: 12,
+  fontFamily: 'Jannah',
+  textTheme:  TextTheme(
+      caption:TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: Colors.grey[500] ,),
+      bodyText1: const TextStyle(
+          fontSize: 14,
           fontWeight: FontWeight.w500,
           color: Colors.white
       )
